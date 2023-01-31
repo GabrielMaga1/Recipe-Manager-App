@@ -21,11 +21,11 @@ public class PastebinService implements IPastebinService {
     public void createPost(Pastebin pastebin) {
         pastebinRepository.save(pastebin);
     }
-
+    @Override
     public void deletePost(Long id) {
         pastebinRepository.deleteById(id);
     }
-
+    @Override
     public Optional<Pastebin> findPost(Long id) {
        return pastebinRepository.findById(id);
     }
