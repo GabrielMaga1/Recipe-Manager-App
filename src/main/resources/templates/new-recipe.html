@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+  <script>
+  function addInputBox(times){
+    var container = document.getElementById("ingredients-container");
+    var inputGroup = document.getElementById("input-boxes");
+
+    for (var i = 0; i < times; i++) {
+      var clone = inputGroup.cloneNode(true);
+      var inputFields = clone.querySelectorAll('input');
+      for (var j = 0; j < inputFields.length; j++) {
+        inputFields[j].value = '';
+      }
+      container.appendChild(clone);
+    }
+  }
+  function addInputs() {
+    var ingredientNameInputs = document.querySelectorAll('input[name="ingredientName"]');
+    var quantityInputs = document.querySelectorAll('input[name="ingredientQuantity"]');
+    var unitInputs = document.querySelectorAll('input[name="unitName"]');
+    var ingredientsString = "";
+
+    for (var j = 0; j < ingredientNameInputs.length; j++) {
+
+      ingredientsString += ingredientNameInputs[j].value.trim() + ",";
+      ingredientsString += quantityInputs[j].value.trim() + ",";
+      ingredientsString += unitInputs[j].value.trim() + ",";
+    }
+
+    ingredientsString = ingredientsString.slice(0, -1);
+
+    var thFieldIngredients = document.querySelector('[th\\:field="*{ingredientsString}"]');
+    thFieldIngredients.value = ingredientsString;
+  }
+</script>
+</head>
+<body>
+  <br>
+  <br>
+  <div class = "container">
+    <div class = "row">
+      <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <br>
+        <h3 class = "text-center"> New Recipe </h3>
+        <div class = "card-body">
+          <form action="#" th:action="@{/save-recipe}" th:object="${recipe}" method="POST">
+            <div class ="form-group">
+              <label>Recipe Name:</label>
+              <input
+                      type = "text"
+                      name = "name"
+                      th:field = "*{name}"
+                      class = "form-control"
+                      placeholder="Title"
+              />
+            </div>
+            <div class ="form-group">
+              <label>Directions:</label>
+              <textarea
+                      name = "text"
+                      th:field = "*{text}"
+                      class = "form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="7"
+                      placeholder="What do you have in mind?"
+              ></textarea>
+            </div>
+            <div class ="form-group">
+            <label>Serves:</label>
+            <input
+                    type = "number"
+                    name = "servers"
+                    min="1"
+                    th:field = "*{serves}"
+                    class = "form-control"
+                    placeholder="serves"
+            />
+            </div>
+            <div class="form-group">
+              <label>Category:</label>
+              <select id="category" name="category" class="form-control" th:field="*{category}">
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Soup">Soup</option>
+                <option value="Snack">Snack</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Baked-goods">Baked-goods</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Difficulty:</label>
+              <select id="difficulty" name="difficulty" class="form-control" th:field="*{difficulty}">
+                <option value="Beginner">Beginner</option>
+                <option value="Easy">Easy</option>
+                <option value="Normal">Normal</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Ingredients:</label>
+              <div id="ingredients-container" class="form-inline">
+                <div class="form-group" id="input-group">
+                  <div id="input-boxes">
+                    <input
+                            type="text"
+                            name="ingredientName"
+                            th:field="*{ingredientsString}"
+                            class="form-control"
+                            placeholder="Ingredient"
+                    />
+                    <input
+                            type="text"
+                            size="10"
+                            name="ingredientQuantity"
+                            th:field="*{ingredientsString}"
+                            class="form-control"
+                            placeholder="Quantity"
+                    />
+                    <input
+                            type="text"
+                            size="10"
+                            name="unitName"
+                            th:field="*{ingredientsString}"
+                            class="form-control"
+                            placeholder="Unit"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button type="button" onclick="addInputBox(1)" class="btn btn-outline-success" style="margin-top: 10px;">
+                Add Inputs
+              </button>
+            </div>
+              <button type="submit" onclick="addInputs()" class="btn btn-outline-success">
+                Save
+              </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

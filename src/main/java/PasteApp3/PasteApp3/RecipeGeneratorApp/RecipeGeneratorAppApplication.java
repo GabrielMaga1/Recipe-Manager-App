@@ -1,22 +1,19 @@
-package PasteApp3;
+package PasteApp3.PasteApp3.RecipeGeneratorApp;
 
-import PasteApp3.Entity.Pastebin;
-import PasteApp3.Repository.PastebinRepository;
-import PasteApp3.Service.PastebinService;
+import PasteApp3.PasteApp3.RecipeGeneratorApp.Repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
-public class PasteApp3Application implements CommandLineRunner{
+public class RecipeGeneratorAppApplication implements CommandLineRunner{
 	public static void main(String[] args) {
-		SpringApplication.run(PasteApp3Application.class, args);
+		SpringApplication.run(RecipeGeneratorAppApplication.class, args);
 	}
 	@Autowired
-	private PastebinRepository pastebinRepository;
+	private RecipeRepository recipeRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
