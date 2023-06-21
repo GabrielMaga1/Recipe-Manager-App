@@ -1,4 +1,4 @@
-package PasteApp3.PasteApp3.RecipeGeneratorApp.Entity;
+package RecipeGeneratorApp.Entity;
 
 import jakarta.persistence.*;
 

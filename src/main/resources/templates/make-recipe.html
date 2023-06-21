@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/64f5c9eeec.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #dee2e6">
+    <div class="container-fluid" >
+        <a class="text-dark" href="/recipes-list" style="margin-left: 100px;">Home</a>
+        <a class="text-dark" href="/inventory-controller/inventory" style="margin-left: 15px;">Inventory</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" align="left" style="margin-left: 15px;">
+            <form class="d-flex" action="/find-recipe" method="GET">
+                <input class="form-control me-2" type="search"
+                       name="searchByName" placeholder="Search Recipe"
+                       aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" style="margin-left: 5px;">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Total Difference</th>
+            <th>Remaining Inventory</th>
+            <th>Ingredient Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item, index : ${evaluation}">
+            <td th:text="${item}"></td>
+            <td th:text="${resultStatus[__${index.index}__]}"></td>
+            <td th:text="${ingredientPrice[__${index.index}__]} + ' Lei'" >Ingredient Cost</td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-outline-success" type="submit" href="/inventory-controller/inventory">Proceed</a>
+</div>
+</body>
+</html>

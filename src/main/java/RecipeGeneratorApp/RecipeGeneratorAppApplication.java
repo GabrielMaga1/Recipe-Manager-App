@@ -1,6 +1,6 @@
-package PasteApp3.PasteApp3.RecipeGeneratorApp;
+package RecipeGeneratorApp;
 
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Repository.RecipeRepository;
+import RecipeGeneratorApp.Repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -1,11 +1,11 @@
-package PasteApp3.PasteApp3.RecipeGeneratorApp.Controller;
+package RecipeGeneratorApp.Controller;
 
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Entity.Ingredients;
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Entity.Recipe;
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Entity.RecipeDTO;
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Service.IngredientsService;
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Service.InventoryService;
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Service.RecipeService;
+import RecipeGeneratorApp.Entity.Ingredients;
+import RecipeGeneratorApp.Entity.Recipe;
+import RecipeGeneratorApp.Entity.RecipeDTO;
+import RecipeGeneratorApp.Service.IngredientsService;
+import RecipeGeneratorApp.Service.InventoryService;
+import RecipeGeneratorApp.Service.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

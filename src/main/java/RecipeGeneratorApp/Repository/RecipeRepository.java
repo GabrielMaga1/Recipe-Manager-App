@@ -1,6 +1,6 @@
-package PasteApp3.PasteApp3.RecipeGeneratorApp.Repository;
+package RecipeGeneratorApp.Repository;
 
-import PasteApp3.PasteApp3.RecipeGeneratorApp.Entity.Recipe;
+import RecipeGeneratorApp.Entity.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
