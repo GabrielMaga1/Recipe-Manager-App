@@ -13,7 +13,7 @@ public class Inventory {
     private String ingredientName;
     private String unit;
     private Double quantity = 0.0;
-    private Double price;
+    private Double price = 0.0;
     private Double costPrice = 0.0;
 
     public Inventory(String ingredientName, String unit, Double quantity, Double price) {
@@ -52,7 +52,7 @@ public class Inventory {
     }
 
     public Double getQuantity() {
-        return Math.round(quantity * 10) / 10.0;
+        return Math.round(quantity * 100) / 100.0;
     }
 
     public void setQuantity(Double quantity) {
@@ -60,7 +60,7 @@ public class Inventory {
     }
 
     public Double getPrice() {
-        return Math.round(price * 10) / 10.0;
+        return Math.round(price * 100) / 100.0;
     }
 
     public void setPrice(Double price) {
@@ -68,7 +68,7 @@ public class Inventory {
     }
 
     public Double getCostPrice() {
-        return Math.round(costPrice * 10) / 10.0;
+        return Math.round(costPrice * 100) / 100.0;
     }
 
     public void setCostPrice(Double costPrice) {

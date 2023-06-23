@@ -5,6 +5,7 @@ import RecipeGeneratorApp.Entity.Inventory;
 import RecipeGeneratorApp.Repository.InventoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 @Service
@@ -70,6 +71,7 @@ public class InventoryService {
                 if(!inventory.getUnit().equals(ingredients.get(i).getUnit())){
                     if(inventory.getUnit().equals("kg") && ingredients.get(i).getUnit().equals("g") ||
                             inventory.getUnit().equals("l") && ingredients.get(i).getUnit().equals("ml")){
+                        System.out.println(inventory.getQuantity() + " _________________ " + (ingredients.get(i).getQuantity() /1000));
                         Double newQuantity = (ingredients.get(i).getQuantity()) / 1000;
                         inventory.setCostPrice(calculateCostPrice(inventory.getQuantity(), newQuantity,
                                 inventory.getPrice()));
@@ -88,10 +90,13 @@ public class InventoryService {
                     resultList.add(inventory.getQuantity() + " " + inventory.getUnit());
                     inventoryRepository.save(inventory);
                 }
+                ingredientPrice[i] = inventory.getCostPrice();
+
             } else {
                 resultList.add("0.0");
+                ingredientPrice[i] = 0.0;
+
             }
-            ingredientPrice[i] = inventory.getCostPrice();
         }
         return resultList;
     }
